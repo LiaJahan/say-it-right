@@ -101,6 +101,31 @@
             <div class="flex gap-5 justify-center flex-wrap mb-10" id="div-container"></div>
         </section>
 
+        <!-- search for a specific words -->
+<div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-1 w-full px-3">
+  <div class="flex justify-center w-full sm:w-auto">
+    <label id="search-value" class="input validator join-item w-10/12 sm:w-64">
+      <input type="text" placeholder="Search your word" required class="w-full px-2 py-1" />
+    </label>
+  </div>
+  <div class="flex justify-center w-full sm:w-auto">
+    <button id="search-button" class="btn btn-primary join-item w-10/12 sm:w-auto">
+      Search
+    </button>
+  </div>
+</div>
+
+
+
+        <!-- spinner/Loading -->
+        <section id="spinner" class="flex justify-center items-center hidden"><span
+                class="loading loading-bars loading-xs"></span>
+            <span class="loading loading-bars loading-sm"></span>
+            <span class="loading loading-bars loading-md"></span>
+            <span class="loading loading-bars loading-lg"></span>
+            <span class="loading loading-bars loading-xl"></span>
+        </section>
+
         <!-- words according to lesson's level -->
         <section id="word-container"
             class=" mx-auto p-10 rounded-lg shadow-lg w-11/12 bg-pink-50 m-10 grid grid-cols-3 gap-5">
@@ -115,7 +140,7 @@
         <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
         <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
             <div id="details_cards_modal" class="modal-box space-y-1">
-                
+
             </div>
         </dialog>
     </main>

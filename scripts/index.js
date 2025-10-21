@@ -3,7 +3,20 @@ const createElements = (arr) => {
     return htmlElements.join(' ');
 };
 
-
+// working on spinner/loading data
+const manageSpinner = (status)=>
+{
+    if(status == true)
+    {
+        document.getElementById('spinner').classList.remove('hidden');
+        document.getElementById('word-container').classList.add('hidden');
+    }
+    else
+    {
+        document.getElementById('word-container').classList.remove('hidden');
+        document.getElementById('spinner').classList.add ('hidden');
+    }
+}
 
 // is the file I will fetch data from another file and show it in my website!! yippi
 
@@ -75,6 +88,7 @@ const loadFile = (lessons) => {
 
 // if lessson button is clicked it will show the wordlists
 const loadLevelWord = (id) => {
+    manageSpinner(true);
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
     fetch(url)
         .then(res => res.json())
@@ -101,6 +115,7 @@ const displayWords = (words) => {
             </div>
 
             `;
+        manageSpinner(false)
         return;
     }
     words.forEach(word => {
@@ -124,7 +139,17 @@ const displayWords = (words) => {
             `
         wordContainer.append(wordBox);
     })
+    manageSpinner(false)
 
 }
+
+// search a specific value "working with search button"
+document.getElementById('search-button').addEventListener('click', ()=>
+{
+    const searchInputValue = document.getElementById('search-value');
+    const searchValue = searchInputValue.value;
+    console.log(searchValue);
+
+})
 
 fetchFile();
