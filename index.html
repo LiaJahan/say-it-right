@@ -100,22 +100,28 @@
         </section>
 
         <!-- words according to lesson's level -->
-         <section id="word-container" class="mx-auto p-10 rounded-lg shadow-lg w-11/12 bg-pink-50 m-10 grid grid-cols-3 gap-5">
-
-            <!-- template for word box -->
-             
-             <div class="text-center rounded-md shadow-lg bg-white p-10 space-y-5">
-                <h1 class="text-4xl font-bold">Eager</h1>
-                <p class="font-medium text-xl">Meaning /Pronounciation</p>
-                <p class="font-bangla font-semibold text-3xl">"অনিচ্ছুক / রিলাকট্যান্ট" </p>
-                <div class="flex items-center justify-between">
-                    <button class="bg-blue-100 hover:bg-blue-200 rounded-md p-2"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="bg-blue-100 hover:bg-blue-200 rounded-md p-2"><i class="fa-solid fa-volume-high"></i></button>
-                </div>
-             </div>
-             
-                
+         <section id="word-container" class=" mx-auto p-10 rounded-lg shadow-lg w-11/12 bg-pink-50 m-10 grid grid-cols-3 gap-5">
+            <div class="font-bangla col-span-full text-center space-y-5">   
+                <p class="font-normal text-sm">আপনি এখনো কোন Lesson Select করেননি</p>
+                <h2 class="font-medium text-3xl">একটি Lesson Select করুন।</h2>
+            </div>
          </section>
+
+         <!-- trying modal for more info button -->
+          <!-- Open the modal using ID.showModal() method -->
+<button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
     </main>
 <script src="scripts/index.js"></script>
 </body>
