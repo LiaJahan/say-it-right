@@ -3,6 +3,13 @@ const createElements = (arr) => {
     return htmlElements.join(' ');
 };
 
+// pronunciation
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 // working on spinner/loading data
 const manageSpinner = (status)=>
 {
@@ -133,7 +140,7 @@ const displayWords = (words) => {
                 
                 <div class="flex items-center justify-between">
                     <button onclick="loadWordDetails(${word.id})" class="bg-blue-100 hover:bg-blue-200 rounded-md p-2"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="bg-blue-100 hover:bg-blue-200 rounded-md p-2"><i class="fa-solid fa-volume-high"></i></button>
+                    <button onclick="pronounceWord('${word.word}')" class="bg-blue-100 hover:bg-blue-200 rounded-md p-2"><i class="fa-solid fa-volume-high"></i></button>
                 </div>
              </div>
             `
@@ -144,12 +151,21 @@ const displayWords = (words) => {
 }
 
 // search a specific value "working with search button"
-document.getElementById('search-button').addEventListener('click', ()=>
-{
-    const searchInputValue = document.getElementById('search-value');
-    const searchValue = searchInputValue.value;
-    console.log(searchValue);
+document.getElementById('search-button').addEventListener('click', () => {
+    removeActive();
+  const searchInput = document.getElementById('search-value');
+  const searchValue = searchInput.value.trim().toLowerCase();
 
-})
+  fetch('https://openapi.programming-hero.com/api/words/all')
+    .then(res => res.json())
+    .then(json => {
+      const allWords = json.data;
+      const filterWords = allWords.filter(word =>
+        word.word.toLowerCase().includes(searchValue)
+      );
+      displayWords(filterWords);
+    });
+});
+
 
 fetchFile();
