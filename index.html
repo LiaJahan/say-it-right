@@ -104,8 +104,9 @@
         <!-- search for a specific words -->
         <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-1 w-full px-3">
             <div class="flex justify-center w-full sm:w-auto">
-                <label  class="input validator join-item w-10/12 sm:w-64">
-                    <input id="search-value" type="text" placeholder="Search your word" required class="w-full px-2 py-1" />
+                <label class="input validator join-item w-10/12 sm:w-64">
+                    <input id="search-value" type="text" placeholder="Search your word" required
+                        class="w-full px-2 py-1" />
                 </label>
             </div>
             <div class="flex justify-center w-full sm:w-auto">
@@ -137,12 +138,38 @@
 
         <!-- trying modal for more info button -->
         <!-- Open the modal using ID.showModal() method -->
-        <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+        <button class="btn" onclick="my_modal_5.showModal()"></button>
         <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
             <div id="details_cards_modal" class="modal-box space-y-1">
 
             </div>
         </dialog>
+
+
+        <footer class="footer sm:footer-horizontal bg-base-200 p-10">
+            <div class="flex flex-col items-start">
+                <a class="btn btn-ghost text-xl flex items-center gap-2">
+                    <span>English</span>
+                    <img src="assets/logo.png" alt="" class="w-6 h-6">
+                    <div class="font-bangla">জানালা</div>
+                </a>
+                <p class="font-bangla text-xl pl-4">ইংরেজি শিখুন সহজে</p>
+                <p class="pl-4">Copyright © 2025 - All rights reserved</p>
+            </div>
+
+            <div class="flex flex-col space-y-5">
+                <div>
+                    <p>Follow us</p>
+                </div>
+                <div class="flex items-center space-x-5">
+                    <img src="assets/github-thumb.png" alt="">
+                    <img src="assets/instagram-thumb.png" alt="">
+                    <img src="assets/youtube-thumb.png" alt="">
+                    <img src="assets/fb-thumb.png" alt="">
+                </div>
+            </div>
+        </footer>
+
     </main>
     <script src="scripts/index.js"></script>
 </body>
