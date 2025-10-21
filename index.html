@@ -71,20 +71,21 @@
         </nav>
 
         <section class="flex flex-col-reverse md:flex-row justify-between items-center w-11/12 mx-auto mb-10">
-        <div class="space-y-7 flex-1 text-center md:text-left lg:text-left">
-            <h1 class="text-5xl font-bold"><span class="text-sky-400">English</span> is Easy!!</h1>
-            <p class="text-2xl font-medium text-gray-600">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন
-                অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
-            <div class="w-full max-w-sm shrink-0 space-y-5">
+            <div class="space-y-7 flex-1 text-center md:text-left lg:text-left">
+                <h1 class="text-5xl font-bold"><span class="text-sky-400">English</span> is Easy!!</h1>
+                <p class="text-2xl font-medium text-gray-600">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন
+                    হন
+                    অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+                <div class="w-full max-w-sm shrink-0 space-y-5">
 
 
-                <input type="text" class="input text-gray-500" placeholder="Enter Your Name" />
+                    <input type="text" class="input text-gray-500" placeholder="Enter Your Name" />
 
-                <input type="password" class="input text-gray-500" placeholder="Password" />
+                    <input type="password" class="input text-gray-500" placeholder="Password" />
 
-                <button class="btn btn-primary ">Get Started</button>
+                    <button class="btn btn-primary ">Get Started</button>
 
-            </div>
+                </div>
             </div>
             <img class="flex-1" src="assets/hero-student.png" alt="">
         </section>
@@ -94,36 +95,31 @@
     <main>
         <!-- lesson buttons -->
         <section>
-            <h1 class="text-5xl mb-5 font-bold text-center"><span class="text-sky-400">Let's</span> Learn Vocabularies</h1>
+            <h1 class="text-5xl mb-5 font-bold text-center"><span class="text-sky-400">Let's</span> Learn Vocabularies
+            </h1>
 
             <div class="flex gap-5 justify-center flex-wrap mb-10" id="div-container"></div>
         </section>
 
         <!-- words according to lesson's level -->
-         <section id="word-container" class=" mx-auto p-10 rounded-lg shadow-lg w-11/12 bg-pink-50 m-10 grid grid-cols-3 gap-5">
-            <div class="font-bangla col-span-full text-center space-y-5">   
+        <section id="word-container"
+            class=" mx-auto p-10 rounded-lg shadow-lg w-11/12 bg-pink-50 m-10 grid grid-cols-3 gap-5">
+            <div class="font-bangla col-span-full text-center space-y-5">
                 <p class="font-normal text-sm">আপনি এখনো কোন Lesson Select করেননি</p>
                 <h2 class="font-medium text-3xl">একটি Lesson Select করুন।</h2>
             </div>
-         </section>
+        </section>
 
-         <!-- trying modal for more info button -->
-          <!-- Open the modal using ID.showModal() method -->
-<button class="btn" onclick="my_modal_5.showModal()">open modal</button>
-<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
+        <!-- trying modal for more info button -->
+        <!-- Open the modal using ID.showModal() method -->
+        <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div id="details_cards_modal" class="modal-box space-y-1">
+                
+            </div>
+        </dialog>
     </main>
-<script src="scripts/index.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 
 </html>
