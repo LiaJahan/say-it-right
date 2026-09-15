@@ -168,4 +168,120 @@ document.getElementById('search-button').addEventListener('click', () => {
 });
 
 
+// Quiz functionality
+let quizWords = [];
+let currentQuestionIndex = 0;
+let score = 0;
+
+const startQuiz = () => {
+    // Fetch all words for the quiz
+    fetch('https://openapi.programming-hero.com/api/words/all')
+        .then(res => res.json())
+        .then(json => {
+            quizWords = json.data;
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('start-quiz-btn').classList.add('hidden');
+            showQuestion();
+        });
+};
+
+const showQuestion = () => {
+    if (currentQuestionIndex >= quizWords.length) {
+        showQuizResult();
+        return;
+    }
+
+    const currentWord = quizWords[currentQuestionIndex];
+    const questionElement = document.getElementById('quiz-question');
+    const optionsElement = document.getElementById('quiz-options');
+    const resultElement = document.getElementById('quiz-result');
+    const nextBtn = document.getElementById('next-question-btn');
+
+    // Clear previous content
+    resultElement.textContent = '';
+    nextBtn.classList.add('hidden');
+
+    // Show question
+    questionElement.textContent = `What is the meaning of "${currentWord.word}"?`;
+
+    // Generate options (correct answer + 3 random wrong answers)
+    const correctAnswer = currentWord.meaning || 'Meaning not available';
+    const wrongAnswers = quizWords
+        .filter(w => w.id !== currentWord.id)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3)
+        .map(w => w.meaning || 'Meaning not available');
+
+    const allOptions = [correctAnswer, ...wrongAnswers].sort(() => Math.random() - 0.5);
+
+    // Create option buttons
+    optionsElement.innerHTML = '';
+    allOptions.forEach(option => {
+        const button = document.createElement('button');
+        button.className = 'btn bg-white text-purple-600 font-medium hover:bg-gray-100 border-none';
+        button.textContent = option;
+        button.onclick = () => checkAnswer(option, correctAnswer, button);
+        optionsElement.appendChild(button);
+    });
+};
+
+const checkAnswer = (selected, correct, button) => {
+    const resultElement = document.getElementById('quiz-result');
+    const nextBtn = document.getElementById('next-question-btn');
+    const allButtons = document.querySelectorAll('#quiz-options button');
+
+    // Disable all buttons
+    allButtons.forEach(btn => btn.disabled = true);
+
+    if (selected === correct) {
+        score++;
+        resultElement.textContent = '✅ Correct!';
+        resultElement.className = 'text-center mt-6 font-bold text-lg text-green-300';
+        button.classList.remove('bg-white', 'text-purple-600');
+        button.classList.add('btn-success', 'text-white');
+    } else {
+        resultElement.textContent = `❌ Wrong! The correct answer was: ${correct}`;
+        resultElement.className = 'text-center mt-6 font-bold text-lg text-red-300';
+        button.classList.remove('bg-white', 'text-purple-600');
+        button.classList.add('btn-error', 'text-white');
+
+        // Highlight correct answer
+        allButtons.forEach(btn => {
+            if (btn.textContent === correct) {
+                btn.classList.remove('bg-white', 'text-purple-600');
+                btn.classList.add('btn-success', 'text-white');
+            }
+        });
+    }
+
+    nextBtn.classList.remove('hidden');
+};
+
+const showQuizResult = () => {
+    const quizContainer = document.getElementById('quiz-container');
+    const percentage = Math.round((score / quizWords.length) * 100);
+
+    quizContainer.innerHTML = `
+        <div class="text-center">
+            <h3 class="text-2xl font-bold mb-4">Quiz Complete! 🎉</h3>
+            <p class="text-xl mb-4">Your Score: ${score} / ${quizWords.length}</p>
+            <p class="text-lg mb-6">Percentage: ${percentage}%</p>
+            <button onclick="location.reload()" class="btn bg-white text-purple-600 font-bold border-none">
+                <i class="fa-solid fa-redo mr-2"></i> Try Again
+            </button>
+        </div>
+    `;
+};
+
+// Event listener for quiz start button
+document.getElementById('start-quiz-btn').addEventListener('click', startQuiz);
+
+// Event listener for next question button
+document.getElementById('next-question-btn').addEventListener('click', () => {
+    currentQuestionIndex++;
+    showQuestion();
+});
+
 fetchFile();
