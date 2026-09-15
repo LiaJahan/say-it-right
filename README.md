@@ -11,7 +11,7 @@ https://openapi.programming-hero.com/api/levels/all
 ```
 
 1. Get ⚡ Words by Levels <br/>
-   https:// openapi.programming-hero.com/api/level/{id}
+   https://openapi.programming-hero.com/api/level/{id}
 
 ```bash
 https://openapi.programming-hero.com/api/level/5
